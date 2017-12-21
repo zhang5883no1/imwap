@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title></title>
+<!-- Bootstrap Styles-->
+<link href="/assets/css/bootstrap.css" rel="stylesheet"></link>
+<!-- FontAwesome Styles-->
+<link href="/assets/css/font-awesome.css" rel="stylesheet"></link>
+<!-- Custom Styles-->
+<link href="/assets/css/custom-styles.css" rel="stylesheet"></link>
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="/assets/js/jquery.metisMenu.js"></script>
+
+<script src="/js/admins/banner.js"></script>
+</head>
+<style>
+	#page-wrapper{margin:0;top:0;}
+</style>
+<body>
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Advanced Tables -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+						<form action="../update" method="POST">
+							<label>banner1</label><br/>
+							<img src="../banner/tab1.jpg" id="tab1"></img><br/>
+							<input type="button" value="上传banner1" class="btn" data-name="tab1"></input><br/><br/>
+							
+							<label>banner2</label><br/>
+							<img src="../banner/tab2.jpg" id="tab2"></img><br/>
+							<input type="button" value="上传banner2" class="btn" data-name="tab2"></input><br/><br/>
+							
+							<label>banner3</label><br/>
+							<img src="../banner/tab3.jpg" id="tab3"></img><br/>
+							<input type="button" value="上传banner3" class="btn" data-name="tab3"></input><br/><br/>
+							
+							<label>banner4</label><br/>
+							<img src="../banner/tab4.jpg" id="tab4"></img><br/>
+							<input type="button" value="上传banner4" class="btn" data-name="tab4"></input>
+						</form>
+						</div>
+					</div>
+					<!--End Advanced Tables -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="uploadForm" style="position:absolute;background-color:white;display:none;">
+	    <input id="file" type="file" multiple="multiple"/>
+	    <button id="uploadBtn" type="button">上传</button>
+	</div>
+</body>
+</html>

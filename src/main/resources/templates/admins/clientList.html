@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title></title>
+<!-- Bootstrap Styles-->
+<link href="/assets/css/bootstrap.css" rel="stylesheet"></link>
+<!-- FontAwesome Styles-->
+<link href="/assets/css/font-awesome.css" rel="stylesheet"></link>
+<!-- Custom Styles-->
+<link href="/assets/css/custom-styles.css" rel="stylesheet"></link>
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="/assets/js/jquery.metisMenu.js"></script>
+</head>
+<style>
+#page-wrapper {
+	margin: 0;
+	top: 0;
+}
+</style>
+<body>
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Advanced Tables -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Advanced Tables</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+								用户名：<input type="text" th:value="${name}" id="sname"></input>
+								<button class="btn btn-default querybtn" type="button">查询</button><br/>
+								<button class="btn btn-default subbtn" type="submit">新增</button>
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables-example">
+									<thead>
+										<tr>
+											<th>用户名</th>
+											<th>等级</th>
+											<th>手机</th>
+											<th>状态</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody th:each="client : ${list.content}">
+										<tr class="even">
+											<td th:text="${client.clientid}"></td>
+											<td th:if="${client.level==1}" >0元</td>
+											<td th:if="${client.level==2}" >5000元</td>
+											<td th:if="${client.level==3}" >10000元</td>
+											<td th:if="${client.level==4}" >20000元</td>
+											<td th:if="${client.level==5}" >50000元</td>
+											<td th:if="${client.level==10}" >巡管</td>
+											<td th:if="${client.level==11}" >老师</td>
+											<td th:text="${client.mobile}"></td>
+											<td th:if="${client.status==1}">正常</td>
+											<td th:if="${client.status==0}">禁止登录</td>
+											<td th:if="${client.status==2}">禁言</td>
+											<td><input type="button" class="updateBtn" value="修改"
+												th:data="${client.clientid}"></input></td>
+										</tr>
+									</tbody>
+								</table>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="dataTables_paginate paging_simple_numbers"
+											id="dataTables-example_paginate">
+											<ul class="pagination">
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!--End Advanced Tables -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:inline="javascript">  
+		var pagenum = [[${list.number}]];
+		var lastpage= [[${list.totalPages}]];
+	</script>
+<script src="/js/admins/clientlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"></meta>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+    <title>期指金汇投直播间</title>
+    <link rel="stylesheet" href="./css/style.css"></link>
+    <link rel="stylesheet" href="./css/mui.css"></link>
+    <script src="./js/mui.js"></script>
+    <script type="text/javascript" src="./js/jquery.JPlaceholder.js"></script>
+    <script src="./js/a.js"></script>
+</head>
+
+<body>
+    <div class="mui-content">
+        <!-- 侧滑导航根容器 -->
+        <!--管理员输入-->
+        <div class="warden">
+            <div class="bottom_input">
+                <div class="gly"><a href=" " class="iocn"><img src="./images/iocn.png" alt=""></img></a></div>
+                <div class="cont">
+                    <input type="text" name="firstname" placeholder="输入讨论内容或提问"></input>
+                </div>
+                <div class="pic">
+                    <a href="" class="expression">
+                        <img src="../images/pic.png" alt=""></img>
+                    </a>
+                </div>
+                <div class="mui-button">
+                    <button id="alertBtn" type="button" class="button">发送</button>
+                    <div id="info"></div>
+                </div>
+            </div>
+        </div>      
+        <!--内容部分-->        
+        <div>
+            <div id="segmentedControl" class="mui-segmented-control">
+                <a class="mui-control-item mui-active" href="#item1">分析师观点</a>
+                <a class="mui-control-item" href="#item2">讨论区</a>
+            </div>
+        </div>
+        <div>
+            <div id="item1" class="mui-control-content mui-active">
+                <!--参看人数和剩余时长定位不动内容-->
+                <div class="watch">75203人次
+                    <span>·</span>剩余时长
+                    <span>110:25:30</span>
+                </div>
+                <!--头部加载更多内容-->
+                <div class="load">下拉加载更多</div>
+                <div class="history">
+                    <span>——</span>上次看到这里
+                    <span>——</span>
+                </div>
+                <div class="time">
+                    <span>12-29</span>
+                    <span>12:30</span>
+                </div>
+                <ul>
+                    <li>
+                        <!--刘老师的回答-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                    <span>回答</span>
+                                    <i>小散户</i>
+                                </div>
+                                <div class="speak">
+                                    <p>我看的是大方向，短线交易可以在65</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师说话-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <div class="speak">
+                                        <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师发图片-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <p>
+                                        <img src="./images/zst.jpg" title="点击看大图" onclick="talk_pic('images/big/big.jpg')"></img>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师说话-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师发图片-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <p>
+                                        <img src="./images/zst.jpg"></img>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+            <div id="item2" class="mui-control-content">
+                <div class="watch">95203人次
+                    <span>·</span>剩余时长
+                    <span>80:25:30</span>
+                </div>
+                <!--头部加载更多内容-->
+                <div class="load">下拉加载更多</div>
+                <div class="history">
+                    <span>——</span>上次看到这里
+                    <span>——</span>
+                </div>
+                <div class="time">
+                    <span>12-29</span>
+                    <span>12:30</span>
+                </div>
+                <ul>
+                    <li>
+                        <!--刘老师的回答-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                    <span>回答</span>
+                                    <i>小散户</i>
+                                </div>
+                                <div class="speak">
+                                    <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师说话-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--刘老师发图片-->
+                        <div class="l_answer">
+                            <div class="tx">
+                                <img src="./images/img.jpg"></img>
+                                <img class="guan" src="./images/guan.png"></img>
+                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">刘老师</a>
+                                    <font>讲师</font>
+                                </div>
+                                <div class="speak">
+                                    <p>
+                                        <img src="./images/zst.jpg"></img>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员对老师说-->
+                        <div class="h_answer">
+                            <div class="tx">
+                                <img src="./images/img1.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">老顽童</a>
+                                    <i>对<a class="ls">刘老师</a>讲</i>
+                                </div>
+                                <div class="speak">
+                                    <p>对的，跟着老师做盈利</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员对老师说-->
+                        <div class="h_answer">
+                            <div class="tx">
+                                <img src="./images/img1.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">老顽童</a>
+                                </div>
+                                <div class="speak">
+                                    <p>对的，跟着老师做盈利</p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员对老师说-->
+                        <div class="m_answer">
+                            <div class="tx">
+                                <img src="./images/img3.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <i>对<a class="ls">刘老师</a>讲</i>
+                                    <a href="">小散户</a>
+                                </div>
+                                <div class="speak">
+                                    <p>对的，跟着老师做盈利</p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员说话-->
+                        <div class="m_answer">
+                            <div class="tx">
+                                <img src="./images/img3.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">小散户</a>
+                                </div>
+                                <div class="speak">
+                                    <p>大家觉得如何</p>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员对老师说-->
+                        <div class="h_answer">
+                            <div class="tx">
+                                <img src="./images/img4.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">木须</a>
+                                </div>
+                                <div class="speak">
+                                    <p>对的，跟着老师做盈利</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <!--会员对老师说-->
+                        <div class="h_answer">
+                            <div class="tx">
+                                <img src="./images/img4.jpg"></img>
+                            </div>
+                            <div class="content">
+                                <div class="l_name">
+                                    <a href="">木须</a>
+                                </div>
+                                <div class="speak">
+                                    <p>对的，跟着老师做盈利</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+   <script src="./js/b.js"></script>
+</body>
+
+</html>

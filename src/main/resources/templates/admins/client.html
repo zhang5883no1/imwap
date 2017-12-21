@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title></title>
+<!-- Bootstrap Styles-->
+<link href="/assets/css/bootstrap.css" rel="stylesheet"></link>
+<!-- FontAwesome Styles-->
+<link href="/assets/css/font-awesome.css" rel="stylesheet"></link>
+<!-- Custom Styles-->
+<link href="/assets/css/custom-styles.css" rel="stylesheet"></link>
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="/assets/js/jquery.metisMenu.js"></script>
+<script src="/js/admins/client.js"></script>
+</head>
+<style>
+	#page-wrapper{margin:0;top:0;}
+</style>
+<body>
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Advanced Tables -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+						<form action="../update" method="POST" id="formbody">
+							<label>用户名</label>
+							<input class="form-control" th:value="${info.clientid}" name="clientId" id="clientId"></input>
+							<label>密码</label>
+							<input class="form-control" th:value="${info.password}" name="password" id="password"></input>
+							<label>等级</label>
+							 <select class="form-control" name ="level"  data-required="true">
+						             <option value="1" th:if="${info.level==1}" th:selected="selected" >0元</option>
+						             <option value="2" th:if="${info.level==2}" th:selected="selected" >50000元</option>
+						             <option value="3" th:if="${info.level==3}" th:selected="selected" >100000元</option>
+						             <option value="4" th:if="${info.level==4}" th:selected="selected" >200000元</option>
+						             <option value="5" th:if="${info.level==5}" th:selected="selected" >500000元</option>
+						             <option value="10" th:if="${info.level==10}" th:selected="selected" >巡管</option>
+						             <option value="11" th:if="${info.level==11}" th:selected="selected" >老师</option>
+						             <option value="1" th:if="${info.level!=1}">0元</option>
+						             <option value="2" th:if="${info.level!=2}">5000元</option>
+						             <option value="3" th:if="${info.level!=3}">10000元</option>
+						             <option value="4" th:if="${info.level!=4}">20000元</option>
+						             <option value="5" th:if="${info.level!=5}">50000元</option>
+						             <option value="10" th:if="${info.level!=10}">巡管</option>
+						             <option value="11" th:if="${info.level!=11}">老师</option>
+						     </select>
+							<label>状态</label>
+							<select class="form-control" name="status" data-required="true">
+								<option value="0" th:if="${info.status==0}" th:selected="selected">禁止登录</option>
+								<option value="1" th:if="${info.status==1}" th:selected="selected">正常</option>
+								<option value="2" th:if="${info.status==2}" th:selected="selected">禁言</option>
+								<option value="0" th:if="${info.status!=0}">禁止登录</option>
+								<option value="1" th:if="${info.status!=1}">正常</option>
+								<option value="2" th:if="${info.status!=2}">禁言</option>
+							</select>
+							<label>手机号</label>
+							<input class="form-control" th:value="${info.mobile}" name="mobile"></input>
+							<button class="btn btn-default" type="button" id="subbtn">提交</button>
+						</form>
+						</div>
+					</div>
+					<!--End Advanced Tables -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
