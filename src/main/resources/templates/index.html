@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./css/style.css"></link>
     <link rel="stylesheet" href="./css/mui.css"></link>
     <script src="./js/mui.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./js/jquery.JPlaceholder.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/a.js"></script>
 </head>
 
@@ -20,7 +22,7 @@
             <div class="bottom_input">
                 <div class="gly"><a href=" " class="iocn"><img src="./images/iocn.png" alt=""></img></a></div>
                 <div class="cont">
-                    <input type="text" name="firstname" placeholder="输入讨论内容或提问"></input>
+                    <input type="text" name="firstname" placeholder="深度剖析，实时解答，技术经得住考验"></input>
                 </div>
                 <div class="pic">
                     <a href="" class="expression">
@@ -53,120 +55,8 @@
                     <span>——</span>上次看到这里
                     <span>——</span>
                 </div>
-                <div class="time">
-                    <span>12-29</span>
-                    <span>12:30</span>
-                </div>
-                <ul>
-                    <li>
-                        <!--刘老师的回答-->
-                        <div class="l_answer">
-                            <div class="tx">
-                                <img src="./images/img.jpg"></img>
-                                <img class="guan" src="./images/guan.png"></img>
-                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
-                            </div>
-                            <div class="content">
-                                <div class="l_name">
-                                    <a href="">刘老师</a>
-                                    <font>讲师</font>
-                                    <span>回答</span>
-                                    <i>小散户</i>
-                                </div>
-                                <div class="speak">
-                                    <p>我看的是大方向，短线交易可以在65</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <!--刘老师说话-->
-                        <div class="l_answer">
-                            <div class="tx">
-                                <img src="./images/img.jpg"></img>
-                                <img class="guan" src="./images/guan.png"></img>
-                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
-                            </div>
-                            <div class="content">
-                                <div class="l_name">
-                                    <a href="">刘老师</a>
-                                    <font>讲师</font>
-                                </div>
-                                <div class="speak">
-                                    <div class="speak">
-                                        <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <!--刘老师发图片-->
-                        <div class="l_answer">
-                            <div class="tx">
-                                <img src="./images/img.jpg"></img>
-                                <img class="guan" src="./images/guan.png"></img>
-                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
-                            </div>
-                            <div class="content">
-                                <div class="l_name">
-                                    <a href="">刘老师</a>
-                                    <font>讲师</font>
-                                </div>
-                                <div class="speak">
-                                    <p>
-                                        <img src="./images/zst.jpg" title="点击看大图" onclick="talk_pic('images/big/big.jpg')"></img>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <!--刘老师说话-->
-                        <div class="l_answer">
-                            <div class="tx">
-                                <img src="./images/img.jpg"></img>
-                                <img class="guan" src="./images/guan.png"></img>
-                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
-                            </div>
-                            <div class="content">
-                                <div class="l_name">
-                                    <a href="">刘老师</a>
-                                    <font>讲师</font>
-                                </div>
-                                <div class="speak">
-                                    <p>我看的是大方向，短线交易可以在65平，反弹起来一样空</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <!--刘老师发图片-->
-                        <div class="l_answer">
-                            <div class="tx">
-                                <img src="./images/img.jpg"></img>
-                                <img class="guan" src="./images/guan.png"></img>
-                                <img class="tx-img" src="./images/tx-img.png" alt=""></img>
-                            </div>
-                            <div class="content">
-                                <div class="l_name">
-                                    <a href="">刘老师</a>
-                                    <font>讲师</font>
-                                </div>
-                                <div class="speak">
-                                    <p>
-                                        <img src="./images/zst.jpg"></img>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                </ul>
+                <div id="adminTopMsg"></div>
+                <div id="adminButtomMsg"></div>
             </div>
             <div id="item2" class="mui-control-content">
                 <div class="watch">95203人次

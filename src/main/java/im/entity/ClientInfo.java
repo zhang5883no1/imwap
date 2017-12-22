@@ -12,13 +12,14 @@ import javax.validation.constraints.NotNull;
 public class ClientInfo {  
     @Id  
     @NotNull  
+    private String openId;//微信平台openid
     private String clientid;//用户名
     private Short connected;//1已连接  0已断开 
     private Long mostsignbits;  
     private Long leastsignbits;  
     private Date lastconnecteddate;  //最后登录时间
     private String password;//密码
-    private Short level;//等级 0游客 1普通用户  10巡管 
+    private Short level;//等级 0游客 1普通用户  9老师 10管理员
     private String headImg;//头像
     private Long createUser;//创建人
     private String mobile;//手机
@@ -104,9 +105,38 @@ public class ClientInfo {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public ClientInfo(String clientid, Short connected, Long mostsignbits, Long leastsignbits, Date lastconnecteddate,
-			String password, Short level, String headImg, Long createUser, String mobile, String roomNo, Short status,Date createDate) {
+	
+	public String getOpenId() {
+		return openId;
+	}
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
+	
+	/** 
+	*  
+	*  
+	* @param openId
+	* @param clientid
+	* @param connected
+	* @param mostsignbits
+	* @param leastsignbits
+	* @param lastconnecteddate
+	* @param password
+	* @param level
+	* @param headImg
+	* @param createUser
+	* @param mobile
+	* @param roomNo
+	* @param status
+	* @param createDate 
+	*/ 
+	
+	public ClientInfo(String openId, String clientid, Short connected, Long mostsignbits, Long leastsignbits,
+			Date lastconnecteddate, String password, Short level, String headImg, Long createUser, String mobile,
+			String roomNo, Short status, Date createDate) {
 		super();
+		this.openId = openId;
 		this.clientid = clientid;
 		this.connected = connected;
 		this.mostsignbits = mostsignbits;
@@ -119,7 +149,7 @@ public class ClientInfo {
 		this.mobile = mobile;
 		this.roomNo = roomNo;
 		this.status = status;
-		this.createDate=createDate;
+		this.createDate = createDate;
 	}
 	public ClientInfo() {
 		super();

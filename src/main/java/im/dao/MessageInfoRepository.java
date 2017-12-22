@@ -13,4 +13,7 @@ public interface MessageInfoRepository extends CrudRepository<MessageInfo, Strin
 	Page<MessageInfo> findAll(Pageable pageable);
 
 	Page<MessageInfo> findByMsgType(String msgType ,Pageable pageable);
+	
+	@Cacheable
+	Page<MessageInfo> findByLevel(Short level ,Pageable pageable);
 }

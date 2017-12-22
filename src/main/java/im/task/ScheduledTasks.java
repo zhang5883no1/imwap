@@ -31,7 +31,7 @@ public class ScheduledTasks {
 		if(initf){
 			initf=false;
 			msgpool.initMsg();
-			msgpool.initTopInfo();
+			msgpool.initAdminMsg();
 		}
 	}
 	

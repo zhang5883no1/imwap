@@ -72,7 +72,7 @@ public class MessageCachePool {
 			}
 			msgList.addLast(msginfo);
 		}
-		if(msginfo.getMsgType().equals("admin")){
+		if(msginfo.getLevel().equals(Constant.ADMIN_LEVEL)){
 			addAdminMessage(msginfo);
 		}
 		messageDao.save(msginfo);
@@ -91,7 +91,7 @@ public class MessageCachePool {
 	public void initAdminMsg(){
 		Sort sort = new Sort(Sort.Direction.DESC, "times");  
 		Pageable pageable = new PageRequest(0, msgSize, sort); 
-		Page<MessageInfo> page=messageDao.findByMsgType("admin", pageable);
+		Page<MessageInfo> page=messageDao.findByLevel(Constant.ADMIN_LEVEL, pageable);
 		List<MessageInfo> infos=page.getContent();
 		for(int i=infos.size()-1;i>-1;i--){
 			addAdminMessage(infos.get(i));
@@ -107,6 +107,5 @@ public class MessageCachePool {
 			addMessageInfo(infos.get(0));
 		}
 	}
-
 
 }
