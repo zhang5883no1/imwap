@@ -26,6 +26,10 @@ public class ClientInfo {
     private String roomNo;//房间号
     private Short status;//状态 0删除 1正常 2禁言
     private Date createDate;
+    
+    private int totalHour;//总时间，单位小时
+    private long timeLeft;//剩余时间，单位分钟
+    
     public String getClientid() {  
         return clientid;  
     }  
@@ -113,6 +117,18 @@ public class ClientInfo {
 		this.openId = openId;
 	}
 	
+	public int getTotalHour() {
+		return totalHour;
+	}
+	public void setTotalHour(int totalHour) {
+		this.totalHour = totalHour;
+	}
+	public long getTimeLeft() {
+		return timeLeft;
+	}
+	public void setTimeLeft(long timeLeft) {
+		this.timeLeft = timeLeft;
+	}
 	/** 
 	*  
 	*  
@@ -129,12 +145,14 @@ public class ClientInfo {
 	* @param mobile
 	* @param roomNo
 	* @param status
-	* @param createDate 
+	* @param createDate
+	* @param totalHour
+	* @param timeLeft 
 	*/ 
 	
 	public ClientInfo(String openId, String clientid, Short connected, Long mostsignbits, Long leastsignbits,
 			Date lastconnecteddate, String password, Short level, String headImg, Long createUser, String mobile,
-			String roomNo, Short status, Date createDate) {
+			String roomNo, Short status, Date createDate, int totalHour, long timeLeft) {
 		super();
 		this.openId = openId;
 		this.clientid = clientid;
@@ -150,9 +168,19 @@ public class ClientInfo {
 		this.roomNo = roomNo;
 		this.status = status;
 		this.createDate = createDate;
+		this.totalHour = totalHour;
+		this.timeLeft = timeLeft;
 	}
 	public ClientInfo() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "ClientInfo [openId=" + openId + ", clientid=" + clientid + ", connected=" + connected
+				+ ", mostsignbits=" + mostsignbits + ", leastsignbits=" + leastsignbits + ", lastconnecteddate="
+				+ lastconnecteddate + ", password=" + password + ", level=" + level + ", headImg=" + headImg
+				+ ", createUser=" + createUser + ", mobile=" + mobile + ", roomNo=" + roomNo + ", status=" + status
+				+ ", createDate=" + createDate + ", totalHour=" + totalHour + ", timeLeft=" + timeLeft + "]";
 	}  
     
     

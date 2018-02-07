@@ -5,13 +5,13 @@
    
    var info = document.getElementById("info");
    
-   document.getElementById("alertBtn").addEventListener('tap', function() {
+   /**document.getElementById("alertBtn").addEventListener('tap', function() {
 	   mui.alert('请联系您的客服升级权限', '您的直播间听课时间为零', function() {
 		   info.innerText = '';
        });
    });
    
-   /**document.getElementById("confirmBtn").addEventListener('tap', function() {
+   document.getElementById("confirmBtn").addEventListener('tap', function() {
 	   var btnArray = ['是', '否'];
 	   mui.confirm('', 'Hello MUI', btnArray, function(e) {
 	       if (e.index == 0) {

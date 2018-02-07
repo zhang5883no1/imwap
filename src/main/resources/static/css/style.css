@@ -1,573 +1,579 @@
-/**公告样式**/
-
+/**鍏憡鏍峰紡**/
 * {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
-ul,
-ol,
-dd,
-dt,
-dl {
-    list-style-type: none;
+ul, ol, dd, dt, dl {
+	list-style-type: none;
 }
 
 a {
-    color: rgb(51, 51, 51);
-    text-decoration: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
+	color: rgb(51, 51, 51);
+	text-decoration: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
 }
 
-a,
-input,
-select {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -webkit-border-radius: 0;
+a, input, select {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-border-radius: 0;
 }
 
-input,
-img {
-    border: none;
+input, img {
+	border: none;
 }
 
-i,
-em {
-    font-style: normal;
-    color: #4b9ffe;
+i, em {
+	font-style: normal;
+	color: #4b9ffe;
 }
 
 :focus {
-    outline: none
+	outline: none
 }
 
 select {
-    background: none
+	background: none
 }
 
 .clear {
-    clear: both;
+	clear: both;
 }
 
-
-/**页面内容*/
-
+/**椤甸潰鍐呭*/
 .mui-content-padded {
-    display: inline-block;
-    margin: 5px;
-    text-align: center;
+	display: inline-block;
+	margin: 5px;
+	text-align: center;
 }
 
-
-/**底部内容**/
-/**会员讲话**/
+/**搴曢儴鍐呭**/
+/**浼氬憳璁茶瘽**/
 .chat {
-    width: 100%;
-    height: 1rem;
-    position: fixed;
-    z-index: 99;
-    bottom: 0px;
-    background: #fff;
-    border-top: 0.01rem solid #efefef;
+	width: 100%;
+	height: 1rem;
+	position: fixed;
+	z-index: 99;
+	bottom: 0px;
+	background: #fff;
+	border-top: 0.01rem solid #efefef;
 }
 
 .bottom_input {
-    width: 90%;
-    height: .5rem;
-    margin: auto;
-    display: block;
-    position: relative;
-    margin-top: .25rem;
+	width: 90%;
+	height: .5rem;
+	margin: auto;
+	display: block;
+	position: relative;
+	margin-top: .25rem;
 }
 
 .bottom_input .cont {
-    position: absolute;
-    left: 0;
-    width: 70%;
+	position: absolute;
+	left: 0;
+	width: 70%;
 }
 
 .bottom_input .cont input {
-    display: block;
-    height: .5rem;   
-  /**  background: #eee;    
+	display: block;
+	height: .5rem;
+	/**  background: #eee;    
      border: none;**/
-  border-bottom: .01rem solid #ddd;
-    border-radius: .08rem;
-    font-size: .3rem;
-    line-height: .5rem;
-    padding-left: .15rem;
+	border-bottom: .01rem solid #ddd;
+	border-radius: .08rem;
+	font-size: .3rem;
+	line-height: .5rem;
+	padding-left: .15rem;
 }
 
 .pic {
-    position: absolute;
-    width: 10%;
-    left: 70%;
-    margin: 0 2%;
+	position: absolute;
+	width: 10%;
+	left: 70%;
+	margin: 0 2%;
 }
 
 .pic .expression {
-    display: inline-block;
-    width: 100%;    
-    text-align: center;
-
+	display: inline-block;
+	width: 100%;
+	text-align: center;
 }
 
 .pic .expression img {
-    display: inline-block;
-    width: 80%;
-    height: .5rem;
-
+	display: inline-block;
+	width: 80%;
+	height: .5rem;
 }
 
 .mui-button {
-    display: block;
-    width: 16%;
-    position: absolute;
-    right: 0;
-    text-align: center;
+	display: block;
+	width: 16%;
+	position: absolute;
+	right: 0;
+	text-align: center;
 }
 
 .button {
-    display: inline-block;
-    width: 100%;
-    line-height: .5rem;
-    background: #3dc33c;
-    border-radius: .05rem;
-    font-size: .28rem;
-    color: #fff;
-    padding: 0;
+	display: inline-block;
+	width: 100%;
+	line-height: .5rem;
+	background: #3dc33c;
+	border-radius: .05rem;
+	font-size: .28rem;
+	color: #fff;
+	padding: 0;
 }
-/**管理员讲话**/
+/**绠＄悊鍛樿璇�**/
 .warden {
-    width: 100%;
-    height: 1rem;
-    position: fixed;
-    z-index: 99;
-    bottom: 0px;
-    background: #fff;
-    border-top: 0.01rem solid #efefef;
+	width: 100%;
+	height: 1rem;
+	position: fixed;
+	z-index: 99;
+	bottom: 0px;
+	background: #fff;
+	border-top: 0.01rem solid #efefef;
 }
 
 .warden .bottom_input {
-    width: 90%;
-    height: .5rem;
-    margin: auto;
-    display: block;
-    position: relative;
-    margin-top: .25rem;
+	width: 90%;
+	height: .5rem;
+	margin: auto;
+	display: block;
+	position: relative;
+	margin-top: .25rem;
 }
-.warden .bottom_input .gly{
-    position: absolute;
-    left: 0;
-    width: 5%;
-    height: .5rem;
+
+.warden .bottom_input .gly {
+	position: absolute;
+	left: 0;
+	width: 5%;
+	height: .5rem;
 }
-.warden .bottom_input .gly .iocn{
-    display: block;    
-    line-height: .5rem;
-    
+
+.warden .bottom_input .gly .iocn {
+	display: block;
+	line-height: .5rem;
 }
-.warden .bottom_input .gly .iocn img{
-    width: 100%;
-    height: auto;
-    
+
+.warden .bottom_input .gly .iocn img {
+	width: 100%;
+	height: auto;
 }
+
 .warden .bottom_input .cont {
-    position: absolute;
-    left: 6%;
-    width: 64%;
+	position: absolute;
+	left: 6%;
+	width: 64%;
 }
 
 .warden .bottom_input .cont input {
-    display: block;
-    height: .5rem;   
-  /**  background: #eee;    
+	display: block;
+	height: .5rem;
+	/**  background: #eee;    
      border: none;**/
-  border-bottom: .01rem solid #ddd;
-    border-radius: .08rem;
-    font-size: .3rem;
-    line-height: .5rem;
-    padding-left: .15rem;
+	border-bottom: .01rem solid #ddd;
+	border-radius: .08rem;
+	font-size: .3rem;
+	line-height: .5rem;
+	padding-left: .15rem;
 }
 
 .warden .pic {
-    position: absolute;
-    width: 10%;
-    left: 70%;
-    margin: 0 2%;
+	position: absolute;
+	width: 10%;
+	left: 70%;
+	margin: 0 2%;
 }
 
 .warden .pic .expression {
-    display: inline-block;
-    width: 100%;    
-    text-align: center;
-
+	display: inline-block;
+	width: 100%;
+	text-align: center;
 }
 
 .warden .pic .expression img {
-    display: inline-block;
-    width: 80%;
-    height: .5rem;
+	display: inline-block;
+	width: 80%;
+	height: .5rem;
 }
 
 .warden .mui-button {
-    display: block;
-    width: 16%;
-    position: absolute;
-    right: 0;
-    text-align: center;
+	display: block;
+	width: 16%;
+	position: absolute;
+	right: 0;
+	text-align: center;
 }
 
 .warden .button {
-    display: inline-block;
-    width: 100%;
-    line-height: .5rem;
-    background: #3dc33c;
-    border-radius: .05rem;
-    font-size: .28rem;
-    color: #fff;
-    padding: 0;
+	display: inline-block;
+	width: 100%;
+	line-height: .5rem;
+	background: #3dc33c;
+	border-radius: .05rem;
+	font-size: .28rem;
+	color: #fff;
+	padding: 0;
 }
 
-
-/**页面独立样式**/
-
+/**椤甸潰鐙珛鏍峰紡**/
 .watch {
-    width: 100%;
-    height: .6rem;
-    position: fixed;
-    top: 1rem;
-    z-index: 99;
-    background: rgb(255, 255, 255);
-    color: rgb(187, 187, 187);
-    font-size: .28rem;
-    text-align: center;
-    line-height: .6rem;
-    border-top: solid 1px rgb(187, 187, 187);
+	width: 100%;
+	height: .6rem;
+	position: fixed;
+	top: 1rem;
+	z-index: 99;
+	background: rgb(255, 255, 255);
+	color: rgb(187, 187, 187);
+	font-size: .28rem;
+	text-align: center;
+	line-height: .6rem;
+	border-top: solid 1px rgb(187, 187, 187);
 }
 
 .watch span {
-    color: rgb(61, 195, 60);
-    padding: 0 0.1rem;
+	color: rgb(61, 195, 60);
+	padding: 0 0.1rem;
 }
 
-.load,
-.history,
-.time {
-    width: 100%;
-    text-align: center;
+.load, .history, .time {
+	width: 100%;
+	text-align: center;
 }
 
 .load {
-    padding-top: 1.7rem;
-    color: rgb(204, 204, 204);
-    font-size: .28rem;
-    line-height: .35rem;
+	padding-top: 1.7rem;
+	color: rgb(204, 204, 204);
+	font-size: .28rem;
+	line-height: .35rem;
 }
 
-.history,
-.time {
-    color: rgb(136, 136, 136);
-    font-size: .24rem;
-    line-height: .30rem;
+.history, .time {
+	color: rgb(136, 136, 136);
+	font-size: .24rem;
+	line-height: .30rem;
 }
 
 .time span {
-    padding: 0 .05rem;
+	padding: 0 .05rem;
 }
 
 .history span {
-    padding: 0 .1rem;
+	padding: 0 .1rem;
 }
 
 ul {
-    width: 90%;
-    margin: auto;
+	width: 90%;
+	margin: auto;
 }
 
 ul li {
-    width: 100%;
+	width: 100%;
 }
 
-
-/**老师回答问题**/
-
+/**鑰佸笀鍥炵瓟闂**/
 .l_answer {
-    position: relative;
-    margin-top: .3rem;
+	position: relative;
+	margin-top: .3rem;
 }
 
 .l_answer .tx {
-    /**  width: 10%;**/
-    float: left;
+	/**  width: 10%;**/
+	float: left;
 }
 
 .l_answer .tx img {
-    display: block;
-    width: .6rem;
-    height: .6rem;
-    border-radius: 50%;
+	display: block;
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
 }
 
 .l_answer .tx .guan {
-    position: absolute;
-    display: block;
-    width: .41rem;
-    height: .36rem;
-    left: 0rem;
-    top: -.26rem;
-    z-index: 1;
+	position: absolute;
+	display: block;
+	width: .41rem;
+	height: .36rem;
+	left: 0rem;
+	top: -.26rem;
+	z-index: 1;
 }
-.l_answer .tx .tx-img{
-    position: absolute;
-    display: block;
-    width: .5rem;
-    height: .5rem;
-    left: .05rem;
-    top: .67rem;
 
+.l_answer .tx .tx-img {
+	position: absolute;
+	display: block;
+	width: .5rem;
+	height: .5rem;
+	left: .05rem;
+	top: .67rem;
 }
+
 .l_answer .content {
-    width: 70%;
-    float: left;
-    margin-left: .2rem;
+	width: 70%;
+	float: left;
+	margin-left: .2rem;
 }
 
 .l_answer .content .l_name {
-    font-size: .28rem;
-    color: rgb(0, 0, 0);
-    line-height: .3rem;
+	font-size: .28rem;
+	color: rgb(0, 0, 0);
+	line-height: .3rem;
 }
 
 .l_answer .content .l_name a {
-    color: #333;
-    font-size: .26rem;
-    font-weight: bold;
+	color: #333;
+	font-size: .26rem;
+	font-weight: bold;
 }
 
 .l_answer .content .l_name font {
-    color: rgb(136, 136, 136);
-    font-weight: bold;
-    font-size: .24rem;
-    padding: 0 .1rem;
+	color: rgb(136, 136, 136);
+	font-weight: bold;
+	font-size: .24rem;
+	padding: 0 .1rem;
 }
 
 .l_answer .content .l_name span {
-    color: rgb(255, 0, 0);
-    font-size: .24rem;
+	color: rgb(255, 0, 0);
+	font-size: .24rem;
 }
 
 .l_answer .content .l_name i {
-    /**color: rgb(0, 0, 254);**/
-    font-size: .24rem;
-    padding-left: .1rem;
+	/**color: rgb(0, 0, 254);**/
+	font-size: .24rem;
+	padding-left: .1rem;
 }
 
 .l_answer .content .speak {
-    display: block;
-    margin-top: .1rem;
+	display: block;
+	margin-top: .1rem;
 }
 
 .l_answer .content .speak p {
-    display: inline-block;
-    font-size: .26rem;
-    color: rgb(51, 51, 51);
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(238, 238, 238);
-    border-radius: .05rem;
-    padding: .2rem;
-    line-height: .35rem;
+	display: inline-block;
+	font-size: .26rem;
+	color: rgb(51, 51, 51);
+	background: rgb(255, 255, 255);
+	border: 1px solid rgb(238, 238, 238);
+	border-radius: .05rem;
+	padding: .2rem;
+	line-height: .35rem;
 }
 
 .l_answer .content .speak p img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+	display: block;
 }
 
-
-/**会员讲话**/
-
+/**浼氬憳璁茶瘽**/
 .h_answer {
-    margin-top: .3rem;
-    position: relative;
+	margin-top: .3rem;
+	position: relative;
 }
 
 .h_answer .tx {
-    /** width: 10%;**/
-    float: left;
+	/** width: 10%;**/
+	float: left;
 }
 
 .h_answer .tx img {
-    display: block;
-    width: .6rem;
-    height: .6rem;
-    border-radius: 50%;
+	display: block;
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
 }
 
 .h_answer .content {
-    width: 70%;
-    float: left;
-    margin-left: .2rem;
+	width: 70%;
+	float: left;
+	margin-left: .2rem;
 }
 
 .h_answer .content .l_name {
-    font-size: .28rem;
-    color: rgb(0, 0, 0);
-    line-height: .3rem;
+	font-size: .28rem;
+	color: rgb(0, 0, 0);
+	line-height: .3rem;
 }
 
 .h_answer .content .l_name a {
-    color: #666;
-    font-size: .26rem;
-    font-weight: bold;
+	color: #666;
+	font-size: .26rem;
+	font-weight: bold;
 }
 
 .h_answer .content .l_name font {
-    color: rgb(136, 136, 136);
-    font-weight: bold;
-    font-size: .24rem;
-    padding: 0 .1rem;
+	color: rgb(136, 136, 136);
+	font-weight: bold;
+	font-size: .24rem;
+	padding: 0 .1rem;
 }
 
 .h_answer .content .l_name span {
-    color: rgb(255, 0, 0);
-    font-size: .24rem;
+	color: rgb(255, 0, 0);
+	font-size: .24rem;
 }
 
 .h_answer .content .l_name i {
-    /**color: rgb(0, 0, 254);**/
-    font-size: .24rem;
-    color: #666;
-    padding-left: .1rem;
+	/**color: rgb(0, 0, 254);**/
+	font-size: .24rem;
+	color: #666;
+	padding-left: .1rem;
 }
-.h_answer .content .l_name i .ls{
-    color: #007aff;
-    padding: 0 .05rem;
-    font-weight: normal;
+
+.h_answer .content .l_name i .ls {
+	color: #007aff;
+	padding: 0 .05rem;
+	font-weight: normal;
 }
 
 .h_answer .content .speak {
-    display: block;
-    margin-top: .1rem;
+	display: block;
+	margin-top: .1rem;
 }
 
 .h_answer .content .speak p {
-    display: inline-block;
-    font-size: .26rem;
-    color: rgb(51, 51, 51);
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(238, 238, 238);
-    border-radius: .05rem;
-    padding: .2rem;
-    line-height: .35rem;
+	display: inline-block;
+	font-size: .26rem;
+	color: rgb(51, 51, 51);
+	background: rgb(255, 255, 255);
+	border: 1px solid rgb(238, 238, 238);
+	border-radius: .05rem;
+	padding: .2rem;
+	line-height: .35rem;
+	word-break: break-all;
 }
 
 .h_answer .content .speak p img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+	display: block;
 }
 
-
-/**我的对话**/
-
+/**鎴戠殑瀵硅瘽**/
 .m_answer {
-    position: relative;
-    float: right;
-    margin-top: .3rem;
+	position: relative;
+	float: right;
+	margin-top: .3rem;
 }
 
 .m_answer .tx {
-    /**width: 10%;*/
-    float: right;
+	/**width: 10%;*/
+	float: right;
 }
 
 .m_answer .tx img {
-    display: block;
-    float: right;
-    width: .6rem;
-    height: .6rem;
-    border-radius: 50%;
+	display: block;
+	float: right;
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
 }
 
 .m_answer .tx .guan {
-    position: absolute;
-    display: block;
-    width: .41rem;
-    height: .36rem;
-    left: 0rem;
-    top: -.26rem;
-    z-index: 1;
+	position: absolute;
+	display: block;
+	width: .41rem;
+	height: .36rem;
+	left: 0rem;
+	top: -.26rem;
+	z-index: 1;
 }
 
 .m_answer .content {
-    width: 70%;
-    float: right;
-    margin-right: .2rem;
+	width: 70%;
+	float: right;
+	margin-right: .2rem;
 }
 
 .m_answer .content .l_name {
-    font-size: .28rem;
-    color: rgb(0, 0, 0);
-    line-height: .3rem;
-    float: right;
+	font-size: .28rem;
+	color: rgb(0, 0, 0);
+	line-height: .3rem;
+	float: right;
 }
 
 .m_answer .content .l_name a {
-    color: #666;
-    font-size: .26rem;
-    font-weight: bold;
+	color: #666;
+	font-size: .26rem;
+	font-weight: bold;
 }
 
 .m_answer .content .l_name font {
-    color: rgb(136, 136, 136);
-    font-weight: bold;
-    font-size: .24rem;
-    padding: 0 .1rem;
+	color: rgb(136, 136, 136);
+	font-weight: bold;
+	font-size: .24rem;
+	padding: 0 .1rem;
 }
 
 .m_answer .content .l_name span {
-    color: rgb(255, 0, 0);
-    font-size: .24rem;
+	color: rgb(255, 0, 0);
+	font-size: .24rem;
 }
 
 .m_answer .content .l_name i {
-    float: left;
-    font-size: .24rem;
-    color: #666;
-    padding-right: .1rem;
+	float: left;
+	font-size: .24rem;
+	color: #666;
+	padding-right: .1rem;
 }
-.m_answer .content .l_name i .ls{
-    color: #007aff;
-    padding: 0 .05rem;
-    font-weight: normal;
+
+.m_answer .content .l_name i .ls {
+	color: #007aff;
+	padding: 0 .05rem;
+	font-weight: normal;
 }
 
 .m_answer .content .speak {
-    display: inline-block;
-    float: right;
-    margin-top: .1rem;
+	display: inline-block;
+	float: right;
+	margin-top: .1rem;
 }
 
 .m_answer .content .speak p {
-    font-size: .26rem;
-    color: rgb(51, 51, 51);
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(238, 238, 238);
-    border-radius: .05rem;
-    padding: .2rem;
-    line-height: .35rem;
+	font-size: .26rem;
+	color: rgb(51, 51, 51);
+	background: rgb(255, 255, 255);
+	border: 1px solid rgb(238, 238, 238);
+	border-radius: .05rem;
+	padding: .2rem;
+	line-height: .35rem;
 }
 
 .m_answer .content .speak p img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+	display: block;
+}
+
+.checkdiv {
+	position: relative;
+	bottom: 125px;
+	float: right;
+}
+
+.bigpic {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 999999;
+	top: 0px;
+	display:none;
+}
+
+.bigpic #imgView{
+	text-align: center;
+	vertical-align: middle;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: relative;
+	width: 100%;
 }

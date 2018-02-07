@@ -11,8 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import im.dao.LiveClientRepository;
 import im.dao.MessageInfoRepository;
 import im.entity.Constant;
+import im.entity.LiveUser;
 import im.entity.MessageInfo;
 
 @Component
@@ -21,7 +23,6 @@ public class MessageCachePool {
 	private int msgSize;
 	
 	@Autowired MessageInfoRepository messageDao;
-		
 	private LinkedList<MessageInfo> msgList=new LinkedList<MessageInfo>();
 	
 	private LinkedList<MessageInfo> adminmsgList=new LinkedList<MessageInfo>();
@@ -56,11 +57,19 @@ public class MessageCachePool {
 	
 	public void addAdminMessage(MessageInfo msginfo){
 		if(adminmsgList.size()>=msgSize){
-			adminmsgList.removeFirst();
+			adminmsgList.removeLast();
 		}
-		adminmsgList.addLast(msginfo);
+		adminmsgList.addFirst(msginfo);
+	}
+	
+	public void addAllMessageInfo(MessageInfo msginfo){
+		if(msgList.size()>=msgSize){
+			msgList.removeLast();
+		}
+		msgList.addFirst(msginfo);
 	}
 
+	//新消息最前
 	public void addMessageInfo(MessageInfo msginfo){
 		if(Constant.MSG_TYPE_SCROL.equals(msginfo.getMsgType())){
 			setScrolInfo(msginfo);
@@ -68,11 +77,11 @@ public class MessageCachePool {
 			setTopInfo(msginfo);
 		}else{
 			if(msgList.size()>=msgSize){
-				msgList.removeFirst();
+				msgList.removeLast();
 			}
-			msgList.addLast(msginfo);
+			msgList.addFirst(msginfo);
 		}
-		if(msginfo.getLevel().equals(Constant.ADMIN_LEVEL)){
+		if(msginfo.getLevel().equals(Constant.TEACHER_LEVEL)){
 			addAdminMessage(msginfo);
 		}
 		messageDao.save(msginfo);
@@ -84,14 +93,15 @@ public class MessageCachePool {
 		Page<MessageInfo> page=messageDao.findAll(pageable);
 		List<MessageInfo> infos=page.getContent();
 		for(int i=infos.size()-1;i>-1;i--){
-			addMessageInfo(infos.get(i));
+			addAllMessageInfo(infos.get(i));
 		}
 	}
 	
 	public void initAdminMsg(){
+		//新消息第一
 		Sort sort = new Sort(Sort.Direction.DESC, "times");  
 		Pageable pageable = new PageRequest(0, msgSize, sort); 
-		Page<MessageInfo> page=messageDao.findByLevel(Constant.ADMIN_LEVEL, pageable);
+		Page<MessageInfo> page=messageDao.findByLevel(Constant.TEACHER_LEVEL, pageable);
 		List<MessageInfo> infos=page.getContent();
 		for(int i=infos.size()-1;i>-1;i--){
 			addAdminMessage(infos.get(i));
@@ -107,5 +117,6 @@ public class MessageCachePool {
 			addMessageInfo(infos.get(0));
 		}
 	}
+
 
 }

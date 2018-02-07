@@ -94,7 +94,7 @@ public class AjaxController {
 	private LinkedList<MessageInfo> setMsgInfo(LinkedList<MessageInfo> resultList ,LinkedList<MessageInfo> msglist,int page){
 		try {
 			for(int i=page*15;i<(page+1)*15;i++){
-				resultList.add(msglist.get(i));
+				resultList.addFirst(msglist.get(i));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

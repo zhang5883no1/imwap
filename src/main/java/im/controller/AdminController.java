@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import ch.qos.logback.core.net.server.Client;
 import im.dao.ClientInfoRepository;
 import im.entity.ClientInfo;
 import im.socket.MessageCachePool;
@@ -83,7 +84,7 @@ public class AdminController {
 		if("add".equals(clientId)){
 			info=new ClientInfo();
 		}else{
-			info=clientInfoRepository.findClientByclientid(clientId);
+			info=clientInfoRepository.findClientByOpenId(clientId);
 		}
 		map.addAttribute("info",info);
 		return "admins/client";
@@ -94,77 +95,18 @@ public class AdminController {
 		if(request.getSession().getAttribute("islogin")==null){
 			reponse.sendRedirect("/admin/");
 		}
-		String clientid=request.getParameter("clientId");
-		String password=request.getParameter("password");
+		String openId=request.getParameter("openId");
 		String level =request.getParameter("level");
 		String status =request.getParameter("status");
-		String mobile =request.getParameter("mobile");
-		ClientInfo info=new ClientInfo();
-		info.setClientid(clientid);
+		String totalHour =request.getParameter("totalHour");
+		ClientInfo info=clientInfoRepository.findClientByOpenId(openId);
+		info.setOpenId(openId);
 		info.setLevel(Short.valueOf(level));
-		info.setPassword(password);
 		info.setStatus(Short.valueOf(status));
-		info.setMobile(mobile);
+		info.setTotalHour(Integer.valueOf(totalHour));
+		info.setTimeLeft(Integer.valueOf(totalHour));
 		clientInfoRepository.save(info);
 		reponse.sendRedirect("/admin/client/list");
-	}
-	
-	
-	@RequestMapping(value = "/banner", method = RequestMethod.GET)
-	public String getBanner(HttpServletRequest request) throws IOException{
-		if(request.getSession().getAttribute("islogin")==null){
-			return "admins/login";
-		}
-		return "admins/banner";
-	}
-	
-	@RequestMapping(value = "/banner/update", method = RequestMethod.POST)
-	@ResponseBody
-	public String uploadPic(HttpServletRequest request) throws IOException {
-		if(request.getSession().getAttribute("islogin")==null){
-			return "admins/login";
-		}
-		List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-		String name=request.getParameter("filename");
-		MultipartFile file = null;
-		BufferedOutputStream stream = null;
-		for (int i = 0; i < files.size(); ++i) {
-			file = files.get(i);
-			if (!file.isEmpty()) {
-				try {
-					String uploadFilePath = file.getOriginalFilename();
-					System.out.println("uploadFlePath:" + uploadFilePath);
-					// 截取上传文件的文件名
-					String uploadFileName = uploadFilePath.substring(uploadFilePath.lastIndexOf('\\') + 1,
-							uploadFilePath.indexOf('.'));
-					System.out.println("multiReq.getFile()" + uploadFileName);
-					// 截取上传文件的后缀
-					String uploadFileSuffix = uploadFilePath.substring(uploadFilePath.indexOf('.') + 1,
-							uploadFilePath.length());
-					System.out.println("uploadFileSuffix:" + uploadFileSuffix);
-					
-					System.out.println(uploadPath+name+".jpg");
-					stream = new BufferedOutputStream(new FileOutputStream(
-							new File(uploadPath+name+".jpg")));
-					byte[] bytes = file.getBytes();
-					stream.write(bytes, 0, bytes.length);
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					try {
-						if (stream != null) {
-							stream.close();
-						}
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			} else {
-				System.out.println("上传文件为空");
-			}
-		}
-		System.out.println("文件接受成功了");
-		return "success";
 	}
 	
 }

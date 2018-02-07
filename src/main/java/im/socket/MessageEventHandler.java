@@ -17,6 +17,7 @@ import im.dao.ClientInfoRepository;
 import im.entity.ClientInfo;
 import im.entity.ConsoleInfoDto;
 import im.entity.Constant;
+import im.entity.LiveUser;
 import im.entity.MessageInfo;
 import im.util.HtmlFilter;
 
@@ -26,6 +27,9 @@ public class MessageEventHandler {
 
 	@Autowired
 	private MessageCachePool messageCachePool;
+	
+	@Autowired
+	private LiveUserHandler liveUserHandler;
 
 	@Autowired
 	private ClientInfoRepository clientInfoRepository;
@@ -39,8 +43,8 @@ public class MessageEventHandler {
 	// 方便后面发送消息时查找到对应的目标client,
 	@OnConnect
 	public void onConnect(SocketIOClient client) {
-		String clientId = client.getHandshakeData().getSingleUrlParam("clientid");
-		ClientInfo clientInfo = clientInfoRepository.findClientByclientid(clientId);
+		String openid = client.getHandshakeData().getSingleUrlParam("ssid");
+		ClientInfo clientInfo = clientInfoRepository.findClientByOpenId(openid);
 		if (clientInfo != null) {
 			Date nowTime = new Date(System.currentTimeMillis());
 			clientInfo.setConnected((short) 1);
@@ -49,6 +53,7 @@ public class MessageEventHandler {
 			clientInfo.setLastconnecteddate(nowTime);
 			clientInfoRepository.save(clientInfo);
 			client.set("info", clientInfo);
+			liveUserHandler.addTotalCount();
 		} else {
 			client.disconnect();
 		}
@@ -71,27 +76,59 @@ public class MessageEventHandler {
 	@OnEvent(value = "messageevent")
 	public void onEvent(SocketIOClient client, AckRequest request, MessageInfo data) {
 		System.out.println("-------------------in messageEvent-----------------------");
+		ClientInfo currentInfo=(ClientInfo) client.get("info");
 		MessageInfo sendData = new MessageInfo();
-		sendData.setSourceClientId(data.getSourceClientId());
+		sendData.setSourceClientId(currentInfo.getClientid());
 		sendData.setTargetClientId(data.getTargetClientId());
 		sendData.setMsgContent(HtmlFilter.getNoHTMLString(data.getMsgContent()));
 		sendData.setTimes(new Date());
 		sendData.setMsgType(data.getMsgType());
-		Short level = ((ClientInfo) client.get("info")).getLevel();
+		sendData.setHeadUrl(currentInfo.getHeadImg());
+		sendData.setLevel(currentInfo.getLevel());
+		sendData.setSourceClientOpenId(currentInfo.getOpenId());
 
-		// 如果发送人id和客户端id不同，表示管理员审核信息
-		if (((ClientInfo) client.get("info")).getClientid().equals(data.getSourceClientId())) {
-			sendData.setLevel(level);
-		} else {
-			ClientInfo clientInfo = clientInfoRepository.findClientByclientid(data.getSourceClientId());
-			sendData.setLevel(clientInfo.getLevel());
-		}
-
-		if (Constant.ADMIN_LEVEL.equals(level) || Constant.TEACHER_LEVEL.equals(level)) {
+		if (Constant.ADMIN_LEVEL.equals(currentInfo.getLevel()) || Constant.TEACHER_LEVEL.equals(currentInfo.getLevel())) {
 			// 封装消息模型
 			messageCachePool.addMessageInfo(sendData);
 		}
-		putInfo(level, sendData);
+		System.out.println("message:"+sendData.getMsgContent());
+		putInfo(currentInfo.getLevel(), sendData);
+	}
+	
+	@OnEvent(value = "checkevent")
+	public void onCheckEvent(SocketIOClient client, AckRequest request, MessageInfo data) {
+		ClientInfo currentInfo=(ClientInfo) client.get("info");
+		if (Constant.ADMIN_LEVEL.equals(currentInfo.getLevel()) || Constant.TEACHER_LEVEL.equals(currentInfo.getLevel())) {
+			// 封装消息模型
+			ConsoleInfoDto cinfo=new ConsoleInfoDto();
+			cinfo.setDdInfo(data.getId().toString());
+			if(Constant.STATUS_PASS.equals(data.getMsgType())){
+				MessageInfo sendData = new MessageInfo();
+				sendData.setSourceClientId(data.getSourceClientId());
+				sendData.setMsgContent(HtmlFilter.getNoHTMLString(data.getMsgContent()));
+				sendData.setTimes(new Date());
+				System.out.println(data.getTargetClientId());
+				System.out.println(Constant.NONE_NAME.equals(data.getTargetClientId()));
+				if(Constant.NONE_NAME.equals(data.getTargetClientId())){
+					sendData.setMsgType(Constant.STATUS_NORMAL_INFO);
+					sendData.setTargetClientId("");
+				}else{
+					sendData.setMsgType(Constant.STATUS_PRI_INFO);
+					sendData.setTargetClientId(data.getTargetClientId());
+				}
+				sendData.setHeadUrl(data.getHeadUrl());
+				sendData.setLevel(data.getLevel());
+				sendData.setSourceClientOpenId(data.getSourceClientOpenId());
+				messageCachePool.addMessageInfo(sendData);
+				putInfo(currentInfo.getLevel(), sendData);
+				cinfo.setType("pass");
+			}else if(Constant.STATUS_UNPASS.equals(data.getMsgType())){
+				cinfo.setType("unpass");
+			}
+			putAdminInfo(cinfo);
+		}else{
+			return;
+		}
 	}
 
 	// 客户控制 踢出禁言 审核
@@ -99,33 +136,41 @@ public class MessageEventHandler {
 	public void onCcEvent(SocketIOClient client, AckRequest request, ConsoleInfoDto data) {
 		System.out.println("-------------------in ccEvent-----------------------");
 		Short level = ((ClientInfo) client.get("info")).getLevel();
+		//管理员权限
 		if (Constant.TEACHER_LEVEL.equals(level) || Constant.ADMIN_LEVEL.equals(level)) {
-			if ("vc".equals(data.getType())) {
-
-			} else if ("stop".equals(data.getType())) {
-				ClientInfo cinfo = clientInfoRepository.findClientByclientid(data.getDdInfo());
-				cinfo.setStatus(Constant.STATUS_STOP);
-				clientInfoRepository.save(cinfo);
-			} else if ("kick".equals(data.getType())) {
+			//踢出
+			if ("kick".equals(data.getType())) {
+				//获取用户信息,更新信息
 				ClientInfo cinfo = clientInfoRepository.findClientByclientid(data.getDdInfo());
 				cinfo.setStatus(Constant.STATUS_TICK);
 				clientInfoRepository.save(cinfo);
+				//给目标发送踢出信息
+				Iterator<SocketIOClient> clientList = server.getAllClients().iterator();
+				while (clientList.hasNext()) {
+					SocketIOClient targetClient = clientList.next();
+					if(cinfo.getClientid().equals(((ClientInfo) targetClient.get("info")).getClientid())){
+						targetClient.sendEvent("ccevent", data);
+						targetClient.disconnect();
+					}
+				}
 			} else {
 				return;
 			}
-			Iterator<SocketIOClient> clientList = server.getAllClients().iterator();
-			while (clientList.hasNext()) {
-				SocketIOClient targetClient = clientList.next();
-				targetClient.sendEvent("ccevent", data);
-			}
 		} else {
-			ClientInfo cinfo = (ClientInfo) client.get("info");
-			cinfo.setStatus(Constant.STATUS_TICK);
-			clientInfoRepository.save(cinfo);
-			client.disconnect();
+			if ("heart".equals(data.getType())) {
+				ClientInfo cinfo = clientInfoRepository.findClientByclientid(((ClientInfo) client.get("info")).getClientid());
+				long timeleft=cinfo.getTimeLeft();
+				if(timeleft<=0){
+					client.sendEvent("ccevent", new ConsoleInfoDto("timeout", ""));
+					client.disconnect();
+				}else{
+					cinfo.setTimeLeft(timeleft-1);
+					clientInfoRepository.save(cinfo);
+				}
+			}
 		}
 	}
-
+	
 	/**
 	 * 根据用户等级推送信息,普通用户信息全部推送至管理员处
 	 * 
@@ -143,13 +188,7 @@ public class MessageEventHandler {
 			SocketIOClient targetClient = clientList.next();
 			// 如果是管理员，推送至所有人
 			if (Constant.ADMIN_LEVEL.equals(level) || Constant.TEACHER_LEVEL.equals(level)) {
-				if (Constant.MSG_TYPE_TOP.equals(sendData.getMsgType())) {
-					targetClient.sendEvent("topevent", sendData);
-				} else if (Constant.MSG_TYPE_SCROL.equals(sendData.getMsgType())) {
-					targetClient.sendEvent("scrolevent", sendData);
-				} else {
-					targetClient.sendEvent("messageevent", sendData);
-				}
+				targetClient.sendEvent("messageevent", sendData);
 				// 如果是客户，信息推送至管理员
 			} else {
 				try {
@@ -161,6 +200,22 @@ public class MessageEventHandler {
 					continue;
 				}
 			}
+		}
+	}
+	
+	private void putAdminInfo(ConsoleInfoDto cinfo){
+		Iterator<SocketIOClient> clientList = server.getAllClients().iterator();
+		while (clientList.hasNext()) {
+			SocketIOClient targetClient = clientList.next();
+			targetClient.sendEvent("ccevent", cinfo);
+		}
+	}
+	
+	public  void sendALL(LiveUser count){
+		Iterator<SocketIOClient> clientList = server.getAllClients().iterator();
+		while (clientList.hasNext()) {
+			SocketIOClient targetClient = clientList.next();
+			targetClient.sendEvent("serverinfo", count);
 		}
 	}
 

@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import im.dao.LiveClientRepository;
+import im.entity.LiveUser;
+import im.socket.LiveUserHandler;
 import im.socket.MessageCachePool;
+import im.socket.MessageEventHandler;
 
 
 /**
@@ -19,6 +23,10 @@ public class ScheduledTasks {
 	
 	@Autowired
 	MessageCachePool msgpool;
+	@Autowired
+	MessageEventHandler messageEventHandler;
+	@Autowired
+	LiveUserHandler liveUserHandler;
 	
 	boolean initf=true;
 	
@@ -32,7 +40,19 @@ public class ScheduledTasks {
 			initf=false;
 			msgpool.initMsg();
 			msgpool.initAdminMsg();
+			liveUserHandler.initLiver();
 		}
 	}
 	
+	@Scheduled(cron="1/10 * * * * *")
+	public void sendTotalCount() {
+		LiveUser totalCount=liveUserHandler.getLiveUser();
+		messageEventHandler.sendALL(totalCount);
+	}
+	
+	
+	@Scheduled(fixedDelay = 5*60*1000)
+	public void saveTotalCount() {
+		liveUserHandler.saveLiveUser();
+	}
 }

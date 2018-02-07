@@ -13,4 +13,12 @@ public class Constant {
 	public static final Short STATUS_STOP=2;
 	public static final Short STATUS_NORMAL=1;
 	public static final Short STATUS_TICK=0;
+	
+	public static final String STATUS_NORMAL_INFO="1";
+	public static final String STATUS_PRI_INFO="2";
+	
+	public static final String STATUS_PASS="pass";
+	public static final String STATUS_UNPASS="unpass";
+	
+	public static final String NONE_NAME="meiyoumingzide2b";
 }

@@ -23,4 +23,6 @@ public interface ClientInfoRepository extends CrudRepository<ClientInfo, String>
     @Cacheable
     Page<ClientInfo> findAll(Pageable pageable);
     
+    ClientInfo findClientByOpenId(String openId);
+    
 }
