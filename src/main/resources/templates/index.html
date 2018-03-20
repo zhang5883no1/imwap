@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="mui-content">
+    <div class="mui-content" id="iframepage1">
         <!-- 侧滑导航根容器 -->
         <!--管理员输入-->
         <div class="warden">
@@ -88,6 +88,7 @@
 	<div class="bigpic">
 		<img id="imgView"  src="./images/ceshi.jpg" ></img>
 	</div>
+	
    <script src="./js/b.js"></script>
    <script th:inline="javascript">  
 		var targetClientId="";
@@ -117,6 +118,14 @@
 	<script th:if="${clientinfo.level==11}" src="./js/index-teacher.js"></script>
 	<script th:if="${clientinfo.level==11}" src="./js/socket-teacher.js"></script>
 	
+	
+	<!-- 开始 -->
+	<div id="changeDiv" class="changeDiv" onclick="changeUrl()" ontouchstart="gtouchstart()" ontouchmove="show(event);" ontouchend="gtouchend()">
+		<img id="cimg" src="./images/tjy.gif" ></img>
+	</div>
+	
+	<script src="./js/page.js"></script>
+   <!-- 结束 -->
 </body>
 
 </html>

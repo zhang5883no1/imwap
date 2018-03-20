@@ -361,6 +361,7 @@ ul li {
 	border-radius: .05rem;
 	padding: .2rem;
 	line-height: .35rem;
+	-webkit-user-select: text;
 }
 
 .l_answer .content .speak p img {
@@ -565,10 +566,10 @@ ul li {
 	position: fixed;
 	z-index: 999999;
 	top: 0px;
-	display:none;
+	display: none;
 }
 
-.bigpic #imgView{
+.bigpic #imgView {
 	text-align: center;
 	vertical-align: middle;
 	top: 50%;
@@ -576,4 +577,16 @@ ul li {
 	transform: translate(-50%, -50%);
 	position: relative;
 	width: 100%;
+}
+
+.changeDiv {
+	position: fixed;
+	z-index: 1;
+	width: 60px;
+	height: 30px;
+	right: 0px;
+	top: 200px;
+}
+.changeDiv img{
+	width:60px;
 }

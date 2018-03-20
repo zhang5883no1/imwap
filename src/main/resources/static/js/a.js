@@ -25,7 +25,8 @@
                     l = o.match(/U3\/((\d+|\.){5,})/i),
                     c = l && parseInt(l[1].split(".").join(""), 10) >= 80,
                     p = navigator.appVersion.match(/(iphone|ipad|ipod)/gi),
-                    s = i.devicePixelRatio || 1;
+                    //s = i.devicePixelRatio || 1;
+                    s = 1;
                 p || d && d[1] > 534 || c || (s = 1);
                 var u = 1 / s,
                     m = r.querySelector('meta[name="viewport"]');

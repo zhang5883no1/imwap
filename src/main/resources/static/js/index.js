@@ -83,9 +83,9 @@ $(function(){
 		$("#sendMsgInput").html("@"+target_name+"@");
 		targetClientId=target_name;
 	});
-	$("#sendMsgInput").focusout(function() {
+	/**$("#sendMsgInput").focusout(function() {
 		$("#subbtn").click();
-	});
+	});*/
 	$(document).on("click",".speak img", function(event) {
 		$(".bigpic").show();
 		$("#imgView").attr("src",$(this).attr("src"));
@@ -97,6 +97,11 @@ $(function(){
 		var defaultshow=$(".mui-active").attr("data-type");
 		setCookie("_default_show",defaultshow,10);
 		//return false;
+	});
+	$(document).keydown(function(event){
+		if(event.keyCode==13){
+			$("#subbtn").click();
+		}
 	});
     $(window).scroll(function() {
        clearTimeout(chatstimer);
